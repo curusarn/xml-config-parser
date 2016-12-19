@@ -56,5 +56,5 @@ someOtherValue = cfg.get("optionalOption")
 ```
 
 ## Dependencies
-`xml` pythom library.
+`xml` python library.  
 You can install this using `pip`
