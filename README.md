@@ -54,3 +54,7 @@ boolValue = cfg.getBool("bool", "nextConfig")
 someOtherValue = cfg.get("optionalOption")
 
 ```
+
+## Dependencies
+`xml` pythom library.
+You can install this using `pip`
