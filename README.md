@@ -1,5 +1,6 @@
 # xml-config-parser
-Python module that parses XML config files with defined structure
+Python module that parses XML config files with defined structure.  
+
 
 ## Example
 
@@ -42,6 +43,14 @@ cfgValues = {
 
 cfg = XmlConfigParser(cfgValues, "/path/to/xml/config", "basicConfig")
 
+# HACK: you can write your custom conditions and mess with default values and their optionality\
+                                                            before you run parseXmlConfig()
+# if /optionalConfigSection is present: set default value for /nextConfig/whatever
+if not cfg.getRoot().find("basicConfig") is None:
+    cfg.set("new_value", "whatever", "nextConfig")
+# HACK: this makes /nextConfig/whatever optional
+
+# NOTE: parseXmlConfig will raise XmlConfigParserException if any of required options are missing
 cfg.parseXmlConfig()
 
 # returns value of "whatever" from "nextConfig" section
@@ -57,4 +66,4 @@ someOtherValue = cfg.get("optionalOption")
 
 ## Dependencies
 `xml` python library.  
-You can install this using `pip`
+You can install this dependency using `pip`
