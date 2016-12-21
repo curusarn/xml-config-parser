@@ -77,14 +77,14 @@ class XmlConfigParser():
 
 
     def get(self, key, category=None):
-        """default getter method to get value for key from config
+        """Default getter method - gets value for key from config from appropriate category
 
         Args:
             key (string): key to find in config
             category (string): category to look for key in, when unsfecified use self.defaultCategory
 
         Returns:
-            (string) value from config
+            string: value from config
         
         Raises:
             XmlConfigParserException: when both argument category and default category are unspecified
@@ -101,17 +101,29 @@ class XmlConfigParser():
     
 
     def getBool(self, key, category=None):
-        """get value for key from config and convert to BOOL - see get() for more details"""
-        return True if (self.get(key, category) != "False") else False
+        """Get value for key from config and convert it to BOOL
+        
+        Note: same as self.get() except for:
+
+        Returns:
+            bool: True unless value form config equals "False" 
+        """
+        return False if (self.get(key, category) == "False") else True
 
 
     def getInt(self, key, category=None):
-        """get value for key from config and convert to INT - see get() for more details"""
+        """Get value for key from config and convert it to INT - see get() for more details
+        
+        Note: same as self.get() except for:
+
+        Returns:
+            int: value from config converted to int  
+        """
         return int(self.get(key, category))
     
 
     def set(self, value, key, category=None):
-        """default setter method to set value for key in config
+        """Default setter method - sets value for key in config in appropriate category
 
         Args:
             value (string): value to set
@@ -133,15 +145,15 @@ class XmlConfigParser():
     
 
     def getCategory(self, category):
-        """get whole category of keys and values as dict - useful to pass multiple values to function"""
+        """Get whole category of keys and values as dict - useful to pass multiple values to function"""
         return self.cfg[category]
     
 
     def getCfgDict(self):
-        """get whole config of categories as dict of dicts"""
+        """Get whole config of categories as dict of dicts"""
         return self.cfg
 
 
     def getRoot(self):
-        """get root of xml config file"""
+        """Get root of xml config file"""
         return self.root
